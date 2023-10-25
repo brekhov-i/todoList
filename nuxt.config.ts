@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     },
   },
   app: {
-    baseURL: "/",
+    baseURL: "/todoList/",
   },
+  // buildDir: "todoList",
 });

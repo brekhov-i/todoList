@@ -5,7 +5,7 @@
       <Form class="todo__form" @add-item="store.addTodoItem($event)" />
       <div class="todo__listItems" v-if="!isLoading && todoList.length !== 0">
         <TodoItem
-          v-for="todoItem in filteredList()"
+          v-for="todoItem in todoList"
           :key="todoItem.id"
           :item-data="todoItem"
           @check-done="store.updateItem($event)"
@@ -18,16 +18,12 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, watch } from "vue";
 import { useMainStore } from "./stores/useMainStore";
-import type { TTodoItem } from "./types/todoItem";
 
 const store = useMainStore();
 
 const { todoList, isLoading } = storeToRefs(store);
-
-const filteredList = (): TTodoItem[] => {
-  return todoList.value.sort((a) => (a.isDone ? 1 : -1));
-};
 
 onMounted(() => {
   store.fetchTodo();
@@ -54,11 +50,13 @@ onMounted(() => {
   &__listItems {
     width: 100%;
     height: auto;
+    max-height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     row-gap: 8px;
+    overflow: auto;
   }
 }
 </style>
