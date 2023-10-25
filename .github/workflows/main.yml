@@ -11,9 +11,8 @@ jobs:
         os: [ubuntu-latest]
         node: [18]
     permissions:
-      pages: write
-      
-
+      contents: write
+  
     steps:
       - name: Checkout
         uses: actions/checkout@master
@@ -32,5 +31,5 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.todolist }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
