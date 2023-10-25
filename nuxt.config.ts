@@ -11,4 +11,7 @@ export default defineNuxtConfig({
       Inter: [400, 700],
     },
   },
+  app: {
+    baseURL: "/todoList/",
+  },
 });

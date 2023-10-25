@@ -18,6 +18,7 @@
 </template>
 
 <script setup lang="ts">
+import { useMainStore } from "./stores/useMainStore";
 import type { TTodoItem } from "./types/todoItem";
 
 const store = useMainStore();
