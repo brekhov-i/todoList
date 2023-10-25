@@ -10,6 +10,9 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node: [18]
+    permissions:
+      pages: write
+      
 
     steps:
       - name: Checkout
